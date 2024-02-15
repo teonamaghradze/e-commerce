@@ -2,7 +2,6 @@ import React from "react";
 import ProductCard from "./ProductCard";
 
 function Products({ products }) {
-  console.log(products);
   return (
     <div className="py-10">
       <div className="flex flex-col items-center gap-4">

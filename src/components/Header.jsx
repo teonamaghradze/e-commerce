@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { logo, cart } from "../assets/index";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const productData = useSelector((state) => state.ecommerce.productData);
+  console.log(productData);
+
   return (
     <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-800 sticky top-0 z-50">
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
@@ -31,7 +35,7 @@ function Header() {
           <div className="relative">
             <img className="w-6" src={cart} alt="cart-logo" />
             <span className="absolute   bottom-[8px] left-2.5 flex items-center justify-center font-semibold text-red-100 text-xs">
-              0
+              {productData.length}
             </span>
           </div>
 
