@@ -1,10 +1,32 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product }) {
+  const navigate = useNavigate();
+  const id = product.title;
+
+  const idString = (id) => {
+    return String(id).toLocaleLowerCase().split(" ").join("");
+  };
+
+  const rootId = idString(id);
+  console.log(rootId);
+
+  const handleDetails = (e) => {
+    navigate(`/product/${rootId}`, {
+      state: {
+        item: product,
+      },
+    });
+  };
+
   return (
-    <div className="group">
-      <div className="w-full h-96 cursor-pointer overflow-hidden">
+    <div className="group relative">
+      <div
+        onClick={(e) => handleDetails(e)}
+        className="w-full h-96 cursor-pointer overflow-hidden"
+      >
         <img
           className="w-full h-full object-cover group-hover:scale-110 duration-500"
           src={product.image}
@@ -30,6 +52,14 @@ function ProductCard({ product }) {
               </span>
             </p>
           </div>
+        </div>
+        <div>
+          <p>{product.category}</p>
+        </div>
+        <div className="absolute top-0 left-0">
+          {product.isNew && (
+            <p className="bg-black text-white font-semibold px-6 py-1 ">sale</p>
+          )}
         </div>
       </div>
     </div>
