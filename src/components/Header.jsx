@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const productData = useSelector((state) => state.ecommerce.productData);
-  console.log(productData);
 
   return (
     <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-800 sticky top-0 z-50">
@@ -32,12 +31,14 @@ function Header() {
               Blog
             </li>
           </ul>
-          <div className="relative">
-            <img className="w-6" src={cart} alt="cart-logo" />
-            <span className="absolute   bottom-[8px] left-2.5 flex items-center justify-center font-semibold text-red-100 text-xs">
-              {productData.length}
-            </span>
-          </div>
+          <Link to="/cart">
+            <div className="relative">
+              <img className="w-6" src={cart} alt="cart-logo" />
+              <span className="absolute   bottom-[8px] left-2.5 flex items-center justify-center font-semibold text-red-100 text-xs">
+                {productData.length}
+              </span>
+            </div>
+          </Link>
 
           <img
             src="https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg"
