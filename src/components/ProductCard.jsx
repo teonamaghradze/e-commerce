@@ -40,7 +40,7 @@ function ProductCard({ product }) {
         <div className="flex justify-between item-center">
           <div>
             <h2 className="text-base font-bold">
-              {product.title.substring(0, 15)}
+              {product.title.substring(0, 12)}
             </h2>
           </div>
           <div className="flex gap-2 relative overflow-hidden w-24 text-sm">

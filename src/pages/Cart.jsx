@@ -36,39 +36,31 @@ function Cart() {
     <div>
       <img className="w-full h-60 object-cover" src={coverWomen} alt="" />
 
-      <div className="max-w-screen-xl mx-auto py-20 flex">
+      <div className="max-w-screen-xl mx-auto py-20 px-4 lg:px-0 flex flex-col lg:flex-row">
         {productData.length > 0 ? (
           <>
             <CartItem />
-            <div className="w-1/3 bg-[#fafafa] py-6 px-4">
+            <div className="w-full lg:w-1/3 bg-[#fafafa] py-6 px-4 lg:px-8">
               <div className="flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6">
-                <h2 className="text-2xl font-medium">total</h2>
-                <p className="flex items-center gap-4 text-base">
-                  <span className="font-bold text-lg">
-                    $ {Number(totalAmount).toFixed(2)}
-                  </span>
+                <h2 className="text-2xl font-medium">Total</h2>
+                <p className="text-base font-bold">
+                  $ {Number(totalAmount).toFixed(2)}
                 </p>
 
-                <p className="flex items-start gap-4 text-base">
-                  Shipping address
-                  <span>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </span>
+                <p className="text-base">
+                  Shipping address: Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit.
                 </p>
 
-                <p className="font-semibold flex justify-between mt-6">
-                  Total amount{" "}
-                  <span className="text-xl font-bold">
-                    {" "}
-                    $ {Number(totalAmount).toFixed(2)}
-                  </span>
+                <p className="text-xl font-semibold flex justify-between">
+                  Total amount: <span>$ {Number(totalAmount).toFixed(2)}</span>
                 </p>
 
                 <button
                   onClick={handleCheckout}
                   className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
                 >
-                  checkout
+                  Checkout
                 </button>
 
                 {pay && (
@@ -79,7 +71,6 @@ function Cart() {
                       amount={totalAmount * 100}
                       label="Pay to Shop"
                       description={`Your Payment amount is $${totalAmount}`}
-                      // token={payment}
                       email={userInfo.email}
                     />
                   </div>
@@ -88,21 +79,15 @@ function Cart() {
             </div>
           </>
         ) : (
-          <div className="flex items-center justify-center w-screen">
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center justify-center text-red-400 font-bold">
-                <p>You haven't added any items to the cart yet.</p>
-              </div>
-              <div className="flex items-center justify-center mt-8">
-                <Link to="/">
-                  <button className="flex items-center gap-1 text-gray-400 hover:text-black duration-200">
-                    <span>
-                      <FaArrowLeft />
-                    </span>
-                    <span>Continue Shopping</span>
-                  </button>
-                </Link>
-              </div>
+          <div className="flex items-center justify-center w-full">
+            <div className="flex flex-col items-center justify-center text-red-400 font-bold">
+              <p>You haven't added any items to the cart yet.</p>
+              <Link to="/" className="mt-8">
+                <button className="flex items-center gap-1 text-gray-400 hover:text-black duration-200">
+                  <FaArrowLeft />
+                  <span>Continue Shopping</span>
+                </button>
+              </Link>
             </div>
           </div>
         )}

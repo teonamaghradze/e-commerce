@@ -14,7 +14,7 @@ function CartItem() {
   const dispatch = useDispatch();
   const productData = useSelector((state) => state.ecommerce.productData);
   return (
-    <div className="w-2/3 pr-10">
+    <div className="lg:w-2/3 pr-10 md:w-[100%]">
       <div className="w-full">
         <h2 className="text-2xl">Shopping cart</h2>
       </div>

@@ -28,26 +28,26 @@ function Product() {
   };
 
   return (
-    <div>
-      <div className="max-w-screen-xl mx-auto my-10 flex gap-10 relative">
-        <div className="w-2/5 relative">
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 my-10">
+        <div className="relative">
           <img
             src={details.image}
             alt="product"
-            className="w-full h-[550px] object-cover"
+            className="w-full h-auto lg:h-[550px] object-cover"
           />
-        </div>
-
-        <div className="absolute top-0 left-0">
           {details.isNew && (
-            <p className="bg-black text-white font-semibold px-6 py-1 ">sale</p>
+            <p className="absolute top-0 left-0 bg-black text-white font-semibold px-6 py-1">
+              Sale
+            </p>
           )}
         </div>
 
-        <div className="w-3/5 flex flex-col justify-center gap-12">
+        <div className="flex flex-col justify-center gap-8">
           <div>
-            <h2 className="text-4xl font-semibold">{details.title}</h2>
-
+            <h2 className="text-3xl lg:text-4xl font-semibold">
+              {details.title}
+            </h2>
             <div className="flex items-center gap-4 mt-3">
               <p className="line-through text-gray-500">${details.oldPrice}</p>
               <p className="font-semibold">${details.price}</p>
@@ -55,34 +55,29 @@ function Product() {
           </div>
           <div className="flex items-center gap-2 text-bold">
             <div className="flex">{renderStars(details.rating)}</div>
-            <p className="text-xs text-gray-500">(1 costumer review)</p>
+            <p className="text-xs text-gray-500">(1 customer review)</p>
           </div>
-          <p className="text-base text-gray-500 mt-3">{details.description}</p>
-          <div className="flex gap-4">
-            <div className="w-52 flex items-center justify-between text-gray-500 gap-4 border p-3">
-              <p className="text-sm">Quantity</p>
-              <div className="flex items-center gap-4 text-sm font-semibold">
-                <button
-                  onClick={() =>
-                    setBaseQuantity(
-                      baseQuantity === 1 ? (baseQuantity = 1) : baseQuantity - 1
-                    )
-                  }
-                  className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
-                >
-                  -
-                </button>
-                <span>{baseQuantity}</span>
-                <button
-                  className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
-                  onClick={() => setBaseQuantity(baseQuantity + 1)}
-                >
-                  +
-                </button>
-              </div>
+          <p className="text-base text-gray-500">{details.description}</p>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 text-sm font-semibold">
+              <button
+                onClick={() =>
+                  setBaseQuantity(baseQuantity === 1 ? 1 : baseQuantity - 1)
+                }
+                className="border h-8 w-8 flex items-center justify-center hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
+              >
+                -
+              </button>
+              <span>{baseQuantity}</span>
+              <button
+                onClick={() => setBaseQuantity(baseQuantity + 1)}
+                className="border h-8 w-8 flex items-center justify-center hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
+              >
+                +
+              </button>
             </div>
             <button
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   addToCart({
                     id: details._id,
@@ -92,11 +87,12 @@ function Product() {
                     quantity: baseQuantity,
                     description: details.description,
                   })
-                ) & toast.success(`${details.title} is added`)
-              }
+                );
+                toast.success(`${details.title} is added`);
+              }}
               className="bg-black text-white py-3 px-6 active:bg-gray-800"
             >
-              Add to cart
+              Add to Cart
             </button>
           </div>
           <p className="text-base text-gray-500">
