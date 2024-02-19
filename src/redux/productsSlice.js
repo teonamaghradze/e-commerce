@@ -23,7 +23,7 @@ export const productsSlice = createSlice({
 
     deleteProduct: (state, action) => {
       const index = state.productData.findIndex(
-        (item) => item._id === action.payload
+        (item) => item.id === action.payload
       );
       if (index !== -1) {
         state.productData.splice(index, 1);
@@ -36,7 +36,7 @@ export const productsSlice = createSlice({
 
     increment: (state, action) => {
       const item = state.productData.find(
-        (item) => item._id === action.payload.id
+        (item) => item.id === action.payload.id
       );
 
       if (item) {
@@ -46,10 +46,10 @@ export const productsSlice = createSlice({
 
     decrement: (state, action) => {
       const item = state.productData.find(
-        (item) => item._id === action.payload.id
+        (item) => item.id === action.payload.id
       );
 
-      if (item) {
+      if (item && item.quantity > 1) {
         item.quantity--;
       }
     },

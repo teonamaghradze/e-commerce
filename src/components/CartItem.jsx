@@ -23,11 +23,11 @@ function CartItem() {
         {productData.map((item) => (
           <div
             className="flex items-center justify-between gap-6 mt-6"
-            key={item._id}
+            key={item.id}
           >
             <div className="flex items-center gap-2">
               <IoMdClose
-                onClick={() => dispatch(deleteProduct(item._id))}
+                onClick={() => dispatch(deleteProduct(item.id))}
                 className="text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300"
               />
               <img
@@ -46,7 +46,7 @@ function CartItem() {
                   onClick={() =>
                     dispatch(
                       decrement({
-                        id: item._id,
+                        id: item.id,
                         title: item.title,
                         image: item.image,
                         price: item.price,
@@ -65,7 +65,7 @@ function CartItem() {
                   onClick={() =>
                     dispatch(
                       increment({
-                        id: item._id,
+                        id: item.id,
                         title: item.title,
                         image: item.image,
                         price: item.price,
