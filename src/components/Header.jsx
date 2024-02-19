@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const productData = useSelector((state) => state.ecommerce.productData);
+  const userInfo = useSelector((state) => state.ecommerce.userInfo);
+  console.log(userInfo);
 
   return (
     <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-800 sticky top-0 z-50">
@@ -40,11 +42,21 @@ function Header() {
             </div>
           </Link>
 
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg"
-            alt="user-logo"
-            className="w-8 h-8 rounded-full"
-          />
+          <Link to="/login">
+            <img
+              src={
+                userInfo
+                  ? userInfo?.image
+                  : "https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg"
+              }
+              alt="user-logo"
+              className="w-8 h-8 rounded-full"
+            />
+          </Link>
+
+          {userInfo && (
+            <p className="font-semibold text-red-800">{userInfo.name}</p>
+          )}
         </div>
       </div>
     </div>
