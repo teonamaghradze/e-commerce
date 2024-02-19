@@ -12,26 +12,21 @@ function Header() {
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
         <Link to="/">
           <div>
-            <img className="w-24" src={logo} alt="logo" />
+            <img className="w-[4.5rem]" src={logo} alt="logo" />
           </div>
         </Link>
         <div className="flex items-center gap-8">
           <ul className="flex items-center gap-8">
-            <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Home
-            </li>
-            <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Pages
-            </li>
-            <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Shop
-            </li>
-            <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Element
-            </li>
-            <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Blog
-            </li>
+            <Link to="/">
+              <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
+                Home
+              </li>
+            </Link>
+            <Link to="/blog">
+              <li className="text-black font-bold hover:text-purple-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
+                Blog
+              </li>
+            </Link>
           </ul>
           <Link to="/cart">
             <div className="relative">

@@ -5,7 +5,7 @@ function Products({ products }) {
   return (
     <div className="py-10">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="text-2xl bg-black text-white py-2 w-80 text-center">
+        <h1 className="text-2xl bg-[#e74c3c] text-white py-2 w-80 text-center">
           UP TO 70% OFF SALE
         </h1>
         <span className="w-20 h-[3px] bg-black"></span>
@@ -16,7 +16,7 @@ function Products({ products }) {
           there's something for everyone. Hurry, while stocks last!
         </p>
       </div>
-      <div className="max-w-screen-xl mx-auto py-10 grid grid-cols-4 gap-10">
+      <div className="max-w-screen-xl mx-auto py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10">
         {products.map((product) => (
           <ProductCard product={product} key={product._id} />
         ))}

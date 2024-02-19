@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { coverWomen, coverMen, logo } from "../assets/index";
+import { coverWomen, cover1, cover2, cover3 } from "../assets/index";
 import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti";
+// import Blog from "../pages/Blog";
 
-const data = [coverMen, coverWomen, logo];
+const data = [cover1, cover2, cover3, coverWomen];
 
 function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,6 +19,8 @@ function Banner() {
 
   return (
     <div className="relative overflow-hidden">
+      {/* <Blog /> */}
+
       <div className="w-screen h-[650px] relative">
         <div
           className="w-[400vw] h-full flex transition-transform duration-1000 ease-in-out"
@@ -37,13 +40,13 @@ function Banner() {
 
       <div className="absolute left-[45%] right-0 mx-auto flex gap-8 bottom-44">
         <div
-          className="w-14 h-12 flex items-center justify-center hover:cursor-pointer border-[1px] border-gray-700 hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
+          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
           onClick={prevSlide}
         >
           <TiChevronLeftOutline className="text-white" size={30} />
         </div>
         <div
-          className="w-14 h-12 flex items-center justify-center hover:cursor-pointer border-[1px] border-gray-700 hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
+          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
           onClick={nextSlide}
         >
           <TiChevronRightOutline className="text-white" size={30} />

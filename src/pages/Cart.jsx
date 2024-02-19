@@ -1,15 +1,18 @@
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { coverWomen } from "../assets";
 import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import StripeCheckout from "react-stripe-checkout";
 
 function Cart() {
   const productData = useSelector((state) => state.ecommerce.productData);
   const [totalAmount, setTotalAmount] = useState("");
-  console.log(productData);
+  const [pay, setPay] = useState(false);
+
+  const userInfo = useSelector((state) => state.ecommerce.userInfo);
 
   useEffect(() => {
     let price = 0;
@@ -20,6 +23,14 @@ function Cart() {
 
     setTotalAmount(price);
   }, [productData]);
+
+  const handleCheckout = () => {
+    if (userInfo) {
+      setPay(true);
+    } else {
+      toast.error("Please Sign in to checkout");
+    }
+  };
 
   return (
     <div>
@@ -53,9 +64,26 @@ function Cart() {
                   </span>
                 </p>
 
-                <button className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300">
+                <button
+                  onClick={handleCheckout}
+                  className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
+                >
                   checkout
                 </button>
+
+                {pay && (
+                  <div className="w-full flex items-center justify-center">
+                    <StripeCheckout
+                      stripeKey="pk_test_51OlWaEIIni8rijeS797TFZkiChV98cNGLwTi6dbKwlyDCJQgJDONKQRSMTSjk9TjkkIMHfiwFk1pj3Rgetmqovc500qWr0qWBW"
+                      name="Ecommerce website"
+                      amount={totalAmount * 100}
+                      label="Pay to Shop"
+                      description={`Your Payment amount is $${totalAmount}`}
+                      // token={payment}
+                      email={userInfo.email}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </>

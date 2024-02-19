@@ -28,7 +28,7 @@ function ProductCard({ product }) {
     <div className="group relative">
       <div
         onClick={(e) => handleDetails(e)}
-        className="w-full h-96 cursor-pointer overflow-hidden"
+        className="w-full h-80 cursor-pointer overflow-hidden"
       >
         <img
           className="w-full h-full object-cover group-hover:scale-110 duration-500"
@@ -75,7 +75,9 @@ function ProductCard({ product }) {
         </div>
         <div className="absolute top-0 left-0">
           {product.isNew && (
-            <p className="bg-black text-white font-semibold px-6 py-1 ">sale</p>
+            <p className="bg-[#e74d3cad] text-white font-semibold px-6 py-1 ">
+              sale
+            </p>
           )}
         </div>
       </div>
