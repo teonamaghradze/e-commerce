@@ -22,7 +22,9 @@ function CartItem() {
       <div>
         {productData.map((item) => (
           <div
-            className="flex items-center justify-between gap-6 mt-6"
+            className="flex items-start justify-between gap-6 mt-6
+            flex-col sm:flex-row sm:items-center sm:justify-between sm:gap-6 
+            "
             key={item.id}
           >
             <div className="flex items-center gap-2">
@@ -37,7 +39,7 @@ function CartItem() {
               />
             </div>
             <h2 className="w-52">{item.title}</h2>
-            <p className="w-10">${item.price}</p>
+            <p className="hidden sm:block w-10">${item.price}</p>
 
             <div className="w-52 flex items-center justify-between text-gray-500 gap-4 border p-3">
               <p className="text-sm">Quantity</p>
@@ -85,7 +87,7 @@ function CartItem() {
       </div>
 
       <button
-        className="bg-red-500 text-white mt-8 ml-7 px-6 hover:bg-red-800 duration-300 py-2"
+        className="bg-red-500 text-white mt-8 ml-0 sm:ml-7 px-6 hover:bg-red-800 duration-300 py-2"
         onClick={() =>
           dispatch(resetCart()) & toast.error("Your Cart is Empty")
         }
@@ -94,7 +96,7 @@ function CartItem() {
       </button>
 
       <Link to="/">
-        <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-200">
+        <button className="mt-8 ml-0 sm:ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-200">
           <span>
             <FaArrowLeft />
           </span>

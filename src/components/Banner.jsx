@@ -38,15 +38,15 @@ function Banner() {
         </div>
       </div>
 
-      <div className="absolute left-[45%] right-0 mx-auto flex gap-8 bottom-44">
+      <div className="absolute left-[46%] right-[43%] mx-auto flex gap-8 bottom-44">
         <div
-          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-[#6a1c07da] hover:text-white active:bg-gray-900 duration-300"
+          className="hidden bg-[#d63f15ad] w-20 h-8 sm:flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-[#6a1c07da] hover:text-white active:bg-gray-900 duration-300"
           onClick={prevSlide}
         >
           <TiChevronLeftOutline className="text-white" size={30} />
         </div>
         <div
-          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-[#6a1c07da] hover:text-white active:bg-gray-900 duration-300"
+          className="hidden bg-[#d63f15ad] w-20 h-8 sm:flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-[#6a1c07da] hover:text-white active:bg-gray-900 duration-300"
           onClick={nextSlide}
         >
           <TiChevronRightOutline className="text-white" size={30} />

@@ -4,9 +4,9 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300 py-12 p-20">
+    <footer className="bg-gray-800 text-gray-300 py-12 p-[1.5rem] sm:p-20">
       <div className="container mx-auto flex flex-wrap justify-between">
-        <div className="w-full md:w-1/4 mb-8 md:mb-0">
+        <div className="w-full md:w-1/3 mb-8 md:mb-0">
           <h3 className="text-lg font-bold mb-4">Shopping e-commerce</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
@@ -107,9 +107,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container mx-auto mt-8 border-t border-gray-700 pt-8 flex justify-between items-center">
-        <div>© 2024 E-Commerce Store</div>
-        <nav>
+      <div className="container mx-auto mt-8 border-t border-gray-700 pt-8 flex justify-between items-center lg:flex-row">
+        <div>© 2024 E-Commerce</div>
+        <nav className="flex flex-wrap">
           <a href="#" className="mx-2 hover:text-gray-400">
             Privacy Policy
           </a>
