@@ -3,7 +3,7 @@ import { coverWomen, cover1, cover2, cover3 } from "../assets/index";
 import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti";
 // import Blog from "../pages/Blog";
 
-const data = [cover1, cover2, cover3, coverWomen];
+const data = [cover2, cover1, cover3, coverWomen];
 
 function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -40,13 +40,13 @@ function Banner() {
 
       <div className="absolute left-[45%] right-0 mx-auto flex gap-8 bottom-44">
         <div
-          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
+          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-[#6a1c07da] hover:text-white active:bg-gray-900 duration-300"
           onClick={prevSlide}
         >
           <TiChevronLeftOutline className="text-white" size={30} />
         </div>
         <div
-          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
+          className="bg-[#d63f15ad] w-20 h-8 flex items-center justify-center hover:cursor-pointer border-gray-500 hover:bg-[#6a1c07da] hover:text-white active:bg-gray-900 duration-300"
           onClick={nextSlide}
         >
           <TiChevronRightOutline className="text-white" size={30} />

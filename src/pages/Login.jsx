@@ -2,6 +2,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { googleLogo, githubLogo } from "../assets/index";
 import {
   GoogleAuthProvider,
+  GithubAuthProvider,
   getAuth,
   signInWithPopup,
   signOut,
@@ -14,6 +15,8 @@ function Login() {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
+  const providerGithub = new GithubAuthProvider();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +25,6 @@ function Login() {
     signInWithPopup(auth, provider)
       .then((res) => {
         const user = res.user;
-        console.log(user);
         dispatch(
           addUser({
             _id: user.uid,
@@ -40,7 +42,37 @@ function Login() {
       });
   };
 
+  const handleGithubLogin = (e) => {
+    e.preventDefault();
+
+    signInWithPopup(auth, providerGithub)
+      .then((res) => {
+        const user = res.user;
+
+        dispatch(
+          addUser({
+            _id: user.uid,
+            name: user.screenName,
+            email: user.email,
+            image: user.photoURL,
+          })
+        );
+
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+      })
+      .catch((error) => {
+        console.error("Error signing in with GitHub:", error);
+        toast.error("Failed to sign in with GitHub. Please try again.");
+      });
+  };
+
   const handleSingOut = () => {
+    if (!auth.currentUser) {
+      return;
+    }
+
     signOut(auth)
       .then(() => {
         toast.success("Log Out Successfully!");
@@ -61,19 +93,25 @@ function Login() {
         </div>
         <button
           onClick={handleSingOut}
-          className="text-base w-40 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-red-600 cursor-pointer duration-300"
+          className="text-base text-white bg-black w-[6rem] h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:bg-red-600 cursor-pointer duration-300"
         >
           Sing Out
         </button>
       </div>
 
       <div className="w-full flex items-center justify-center gap-10">
-        <div className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300">
+        <div
+          onClick={handleGithubLogin}
+          className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300"
+        >
           <img className="w-8" src={githubLogo} alt="github logo" />
 
           <span className="font-bold text-gray-700">Sing in with Github</span>
         </div>
-        <button className="text-base w-40 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-red-600 cursor-pointer duration-300">
+        <button
+          onClick={handleSingOut}
+          className="text-base text-white bg-black w-[6rem] h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:bg-red-600 cursor-pointer duration-300"
+        >
           Sing Out
         </button>
       </div>
